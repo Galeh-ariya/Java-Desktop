@@ -5,6 +5,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import repository.BookRepository;
 import repository.BookRepositoryImpl;
+import service.BookService;
+import service.BookServiceImpl;
 
 /**
  *
@@ -219,8 +221,11 @@ public class BookView extends javax.swing.JFrame {
         book.setStock(stok);
         book.setPrice(harga);
         
-        BookRepository repo = new BookRepositoryImpl();
-        var result = repo.add(book);
+//        BookRepository repo = new BookRepositoryImpl();
+//        var result = repo.add(book);
+        BookService service = new BookServiceImpl();
+        var result = service.add(book);
+        
         
         if(result == true) {
             JOptionPane.showMessageDialog(null, "Success Insert Data!");
@@ -264,8 +269,11 @@ public class BookView extends javax.swing.JFrame {
         book.setStock(stok);
         book.setPrice(harga);
         
-        BookRepository repo = new BookRepositoryImpl();
-        var result = repo.update(book);
+//        BookRepository repo = new BookRepositoryImpl();
+//        var result = repo.update(book);
+        
+        BookService service = new BookServiceImpl();
+        var result = service.update(book);
         
         if(result == true) {
             JOptionPane.showMessageDialog(null, "Success Update Data!");
@@ -285,8 +293,11 @@ public class BookView extends javax.swing.JFrame {
         BookModel book = new BookModel();
         book.setId(id);
         
-        BookRepository repo = new BookRepositoryImpl();
-        var result = repo.delete(book);
+//        BookRepository repo = new BookRepositoryImpl();
+//        var result = repo.delete(book);
+        BookService service = new BookServiceImpl();
+        var result = service.delete(book);
+
         
         if(result == true) {
             JOptionPane.showMessageDialog(null, "Success Delete Data!");
