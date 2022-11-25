@@ -210,27 +210,32 @@ public class BookView extends javax.swing.JFrame {
     
 //    Tombol Simpan data
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        String id = idbook.getText();
-        String nama = name.getText();
-        int stok =  Integer.parseInt(stock.getText());
-        int harga = Integer.parseInt(price.getText());
         
-        BookModel book = new BookModel();
-        book.setId(id);
-        book.setName(nama);
-        book.setStock(stok);
-        book.setPrice(harga);
-        
-//        BookRepository repo = new BookRepositoryImpl();
-//        var result = repo.add(book);
-        BookService service = new BookServiceImpl();
-        var result = service.add(book);
-        
-        
-        if(result == true) {
-            JOptionPane.showMessageDialog(null, "Success Insert Data!");
-        } else {
+        if(stock.getText().equals("") && price.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Failed Insert Data!");
+        } else {
+            String id = idbook.getText();
+            String nama = name.getText();
+            int stok =  Integer.parseInt(stock.getText());
+            int harga = Integer.parseInt(price.getText());
+
+            BookModel book = new BookModel();
+            book.setId(id);
+            book.setName(nama);
+            book.setStock(stok);
+            book.setPrice(harga);
+
+    //        BookRepository repo = new BookRepositoryImpl();
+    //        var result = repo.add(book);
+            BookService service = new BookServiceImpl();
+            var result = service.add(book);
+
+
+            if(result == true) {
+                JOptionPane.showMessageDialog(null, "Success Insert Data!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Failed Insert Data!");
+            }
         }
         
         refresh();
@@ -258,27 +263,32 @@ public class BookView extends javax.swing.JFrame {
 
 //    Method tombol Update
     private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
-        String id = idbook.getText();
-        String nama = name.getText();
-        int stok =  Integer.parseInt(stock.getText());
-        int harga = Integer.parseInt(price.getText());
         
-        BookModel book = new BookModel();
-        book.setId(id);
-        book.setName(nama);
-        book.setStock(stok);
-        book.setPrice(harga);
-        
-//        BookRepository repo = new BookRepositoryImpl();
-//        var result = repo.update(book);
-        
-        BookService service = new BookServiceImpl();
-        var result = service.update(book);
-        
-        if(result == true) {
-            JOptionPane.showMessageDialog(null, "Success Update Data!");
-        } else {
+        if(stock.getText().equals("") && price.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Failed Update data!");
+        } else {
+            String id = idbook.getText();
+            String nama = name.getText();
+            int stok =  Integer.parseInt(stock.getText());
+            int harga = Integer.parseInt(price.getText());
+
+            BookModel book = new BookModel();
+            book.setId(id);
+            book.setName(nama);
+            book.setStock(stok);
+            book.setPrice(harga);
+
+    //        BookRepository repo = new BookRepositoryImpl();
+    //        var result = repo.update(book);
+
+            BookService service = new BookServiceImpl();
+            var result = service.update(book);
+
+            if(result == true) {
+                JOptionPane.showMessageDialog(null, "Success Update Data!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Failed Update data!");
+            }
         }
         
         refresh();
@@ -290,19 +300,23 @@ public class BookView extends javax.swing.JFrame {
     private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
         String id = idbook.getText();
         
-        BookModel book = new BookModel();
-        book.setId(id);
-        
-//        BookRepository repo = new BookRepositoryImpl();
-//        var result = repo.delete(book);
-        BookService service = new BookServiceImpl();
-        var result = service.delete(book);
-
-        
-        if(result == true) {
-            JOptionPane.showMessageDialog(null, "Success Delete Data!");
-        } else {
+        if(id.equals("")) {
             JOptionPane.showMessageDialog(null, "Failed Delete data!");
+        } else {
+            BookModel book = new BookModel();
+            book.setId(id);
+
+    //        BookRepository repo = new BookRepositoryImpl();
+    //        var result = repo.delete(book);
+            BookService service = new BookServiceImpl();
+            var result = service.delete(book);
+
+
+            if(result == true) {
+                JOptionPane.showMessageDialog(null, "Success Delete Data!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Failed Delete data!");
+            }
         }
         
         refresh();
