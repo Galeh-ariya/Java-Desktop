@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package service;
 
 import entity.BookModel;
@@ -11,10 +7,12 @@ import entity.BookModel;
  */
 public interface BookService {
     
-    Boolean add(BookModel model);
+    BookModel[] getAll();
     
-    Boolean update(BookModel model);
+    Boolean add(String id, String name, String stock, String price);
     
-    Boolean delete(BookModel model);
+    Boolean update(String id, String name, String stock, String price);
+    
+    Boolean delete(String id);
     
 }

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package service;
 
 import entity.BookModel;
@@ -15,7 +11,34 @@ import repository.BookRepositoryImpl;
 public class BookServiceImpl implements BookService {
 
     @Override
-    public Boolean add(BookModel model) {
+    public BookModel[] getAll() {
+        BookRepository repo = new BookRepositoryImpl();
+        BookModel[] result = repo.getAll();
+        return result;
+    }
+    
+    
+
+    @Override
+    public Boolean add(String id, String name, String stock, String price) {
+        
+        int stok;
+        int harga;
+        
+        try{
+          stok = Integer.parseInt(stock);
+          harga = Integer.parseInt(price);  
+        } catch(NumberFormatException ex) {
+            return false;
+        }
+        
+        
+        BookModel model= new BookModel();
+        model.setId(id);
+        model.setName(name);
+        model.setStock(stok);
+        model.setPrice(harga);
+        
         
         BookRepository repo = new BookRepositoryImpl();
         var result = repo.add(model);
@@ -28,7 +51,23 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Boolean update(BookModel model) {
+    public Boolean update(String id, String name, String stock, String price) {
+        
+        int stok;
+        int harga;
+        
+        try{
+          stok = Integer.parseInt(stock);
+          harga = Integer.parseInt(price);  
+        } catch(NumberFormatException ex) {
+            return false;
+        }
+        
+        BookModel model= new BookModel();
+        model.setId(id);
+        model.setName(name);
+        model.setStock(stok);
+        model.setPrice(harga);
         
         BookRepository repo = new BookRepositoryImpl();
         var result = repo.update(model);
@@ -41,7 +80,10 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Boolean delete(BookModel model) {
+    public Boolean delete(String id) {
+        
+        BookModel model= new BookModel();
+        model.setId(id);
         
         BookRepository repo = new BookRepositoryImpl();
         var result = repo.delete(model);
